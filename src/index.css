@@ -10,6 +10,10 @@
   font-family: "font2";
   src: url("../src/assets/ClashDisplay-Bold.otf");
 }
+@font-face {
+  font-family: "font3";
+  src: url("../src/assets/ClashDisplay-Extralight.otf");
+}
 
 @custom-variant dark (&:is(.dark *));
 
