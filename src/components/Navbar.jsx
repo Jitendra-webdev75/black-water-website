@@ -4,14 +4,40 @@ function Navbar() {
   return (
     <>
       <div className="nav h-8vh w-full flex justify-between items-center  absolute top-0 p-2 bg-black text-white">
-        <div className="logo  flex items-center h-[8vh] w-[8vw] ml-3 mt-1 text-2xl ">
-          <img src="./src/assets/logo.png" alt="" />
+        <div
+          className="logo  flex items-center  bg-cover object-cover
+        h-[8vh] w-[9vw]  ml-3 mt-1 text-2xl  "
+        >
+          <img
+            src="./src/assets/logo.png"
+            className="sm:scale-200  md:scale-200 lg:scale-110 scale-200
+              p-2"
+          />
         </div>
-        <div className="navSect flex gap-10 mr-10 text-xl font-[font1]">
-          <h1>Home</h1>
-          <h1>Product</h1>
-          <h1>Services</h1>
-          <h1>About</h1>
+
+        <div
+          className="menubar flex sm:flex md:hidden lg:hidden
+          text-3xl p-3 sm:text-3xl sm:p-3"
+        >
+          <i className="ri-menu-fill"></i>
+        </div>
+
+        <div
+          className="navSect hidden gap-10 mr-10 text-xl font-[font1] 
+          sm:hidden   md:flex lg:flex  z-20"
+        >
+          <h1 className="sm:text-2xl md:text-2xl lg:text-xl hover:text-green-400 cursor-pointer ">
+            Home
+          </h1>
+          <h1 className="sm:text-2xl md:text-2xl lg:text-xl hover:text-green-400 cursor-pointer">
+            Product
+          </h1>
+          <h1 className="sm:text-2xl md:text-2xl lg:text-xl hover:text-green-400 cursor-pointer">
+            Services
+          </h1>
+          <h1 className="sm:text-2xl md:text-2xl lg:text-xl hover:text-green-400 cursor-pointer">
+            About
+          </h1>
         </div>
       </div>
     </>
