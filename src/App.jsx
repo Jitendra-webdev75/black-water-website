@@ -89,22 +89,26 @@ function App() {
         className="page2 h-screen w-full flex  overflow-hidden text-white
         bg-gradient-to-br from-black via-neutral-900 to-neutral-800 "
       >
-        <div className="leftSect h-full w-1/2 ">
-          <img
-            src="./src/assets/btlImg.png "
-            className="scale-53 absolute top-120 right-130  z-10 drop-shadow-[0_0_12px_rgba(34,197,94,0.35)] "
-          />
+        <div className="leftSect relative h-full w-1/2 ">
+          <div className="stoneWrapp relative h-full w-full">
+            <img
+              src="./src/assets/stone.png"
+              className="scale-50 absolute top-[50%]
+            sm:scale-50 sm:absolute sm:top-[50%]
+              md:scale-75 md:absolute md:top-[50%]
+              lg:scale-75 lg:absolute lg:top-[50%]
+            drop-shadow-md drop-shadow-amber-50 "
+            />
 
-          <img
-            src="./src/assets/stone.png"
-            className="scale-56 relative top-1/2 drop-shadow-md drop-shadow-amber-50 "
-          />
-
-          <img
-            src="./src/assets/grass.png "
-            className="scale-33 absolute top-160 right-180 z-20
+            <img
+              src="./src/assets/grass.png "
+              className="hidden  absolute 
+              sm:hidden 
+               md:block md:scale-50 md:absolute md:top-[38%] md:-left-[22%] 
+                lg:block  lg:scale-50 lg:absolute lg:top-[30%] lg:-left-[22%]
               brightness-110 contrast-110 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)] "
-          />
+            />
+          </div>
         </div>
         <div className="rightSect flex flex-col  h-full  w-1/2 items-center p-9 gap-7 ">
           <h1 className="text-4xl font-[font1]">
