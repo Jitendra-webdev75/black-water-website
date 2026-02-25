@@ -59,7 +59,7 @@ function App() {
               Evocus Black Water
             </h1>
             <button
-              className="ctaBtn h-[10vh] w-[50vw] text-5xl  bg-[#06923E] rounded-lg mt-10
+              className="ctaBtn h-[10vh] w-[50vw] text-3xl  bg-[#06923E] rounded-lg mt-10
               p-2 shadow-2xl shadow-black active:scale-90 text-zinc-100 text-shadow-md text-shadow-black
               cursor-pointer
               sm:h-[8vh] sm:w-[30vw] sm:p-2 sm:text-4xl
