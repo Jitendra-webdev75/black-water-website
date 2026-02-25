@@ -1,7 +1,46 @@
+import { useGSAP } from "@gsap/react";
 import Navbar from "./components/Navbar";
 import Particles from "./components/Particles";
 import "remixicon/fonts/remixicon.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+gsap.registerPlugin(ScrollTrigger);
 function App() {
+  const prodRef = useRef(null);
+  const btnRef = useRef(null);
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".page2",
+        start: "top 85%",
+        end: "top 10%",
+        scrub: 3,
+      },
+    });
+
+    tl.to(prodRef.current, {
+      x: -670,
+      y: 620,
+      scale: 0.77,
+      duration: 1.3,
+      ease: "power3.out",
+    });
+
+    tl.from(prodRef.current, {
+      top: "120%",
+      left: "-25%",
+    });
+
+    gsap.to(btnRef.current, {
+      y: -10,
+      duration: 1.2,
+
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+    });
+  }, []);
   return (
     <>
       <div className="main h-screen w-full flex  ">
@@ -59,6 +98,7 @@ function App() {
               Evocus Black Water
             </h1>
             <button
+              ref={btnRef}
               className="ctaBtn h-[10vh] w-[50vw] text-3xl  bg-[#06923E] rounded-lg mt-10
               p-2 shadow-2xl shadow-black active:scale-90 text-zinc-100 text-shadow-md text-shadow-black
               cursor-pointer
@@ -70,12 +110,13 @@ function App() {
             </button>
           </div>
 
-          <div className="rightContent  relative flex flex-col justify-center items-center w-1/2 overflow-hidden mt-20">
-            <div className="productImg  z-10 mt-3.5 ">
+          <div className="rightContent  relative flex flex-col justify-center items-center w-1/2  mt-20">
+            <div className="productImg  z-50 mt-3.5 ">
               <img
+                ref={prodRef}
                 src="./src/assets/btlimg.png"
-                className=" sm:scale-150 md:scale-110 lg:scale-90 scale-100 
-                  drop-shadow-[0_0_12px_rgba(34,197,94,0.35)]"
+                className="btl sm:scale-150 md:scale-110 lg:scale-90 scale-100 
+                  drop-shadow-[0_0_12px_rgba(34,197,94,0.35)] z-50 "
               />
             </div>
             <div className="splash absolute">
