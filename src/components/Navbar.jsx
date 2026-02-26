@@ -24,7 +24,7 @@ function Navbar() {
 
         <div
           className="navSect hidden gap-10 mr-10 text-xl font-[font1] 
-          sm:hidden   md:flex lg:flex  z-20"
+          sm:hidden   md:flex lg:flex  z-20 "
         >
           <h1 className="sm:text-2xl md:text-2xl lg:text-xl hover:text-green-400 cursor-pointer ">
             Home

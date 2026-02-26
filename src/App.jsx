@@ -10,41 +10,107 @@ function App() {
   const prodRef = useRef(null);
   const btnRef = useRef(null);
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".page2",
-        start: "top 85%",
-        end: "top 10%",
-        scrub: 3,
-      },
+    let midDev = gsap.matchMedia();
+    midDev.add("(min-width:768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".page2",
+          start: "top 80%",
+          end: "top 20%",
+          scrub: 1.5,
+          anticipatePin: 1,
+        },
+      });
+
+      tl.set(prodRef.current, {
+        x: 0,
+        y: 0,
+        rotate: 0,
+        scale: 0.88,
+      });
+
+      tl.to(prodRef.current, {
+        x: -670,
+        y: 620,
+        scale: 0.77,
+        ease: "power1.out",
+      });
+
+      gsap.from(prodRef.current, {
+        scale: 0,
+        rotate: "180deg",
+        duration: 1.5,
+        ease: "power1.inOut",
+      });
+      gsap.to(prodRef.current, {
+        scale: 0.77,
+        rotate: "0deg",
+        duration: 1.5,
+        ease: "power1.inOut",
+      });
+
+      gsap.from(".leftCont h1 ", {
+        y: 50,
+        duration: 1.3,
+        stagger: 0.2,
+      });
+
+      gsap.to(".leftCont h1 ", {
+        y: -20,
+        duration: 1.3,
+        stagger: 0.2,
+      });
+      gsap.to(".rightSect h1,.rightSect h2,.rightSect p,.rightSect .card", {
+        y: -20,
+        duration: 2,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".page2",
+          start: "top 80%",
+        },
+      });
     });
 
-    tl.to(prodRef.current, {
-      x: -670,
-      y: 620,
-      scale: 0.77,
-      duration: 1.3,
-      ease: "power3.out",
-    });
+    // mobile devices
 
-    tl.from(prodRef.current, {
-      top: "120%",
-      left: "-25%",
-    });
-
-    gsap.to(btnRef.current, {
-      y: -10,
-      duration: 1.2,
-
-      repeat: -1,
-      yoyo: true,
+    gsap.from(prodRef.current, {
+      scale: 0,
+      rotate: "180deg",
+      duration: 1.5,
       ease: "power1.inOut",
+      ease: "power1.out",
+    });
+
+    gsap.to(prodRef.current, {
+      scale: 0.77,
+      rotate: "0deg",
+      duration: 1.5,
+      ease: "power1.inOut",
+    });
+    gsap.to(prodRef.current, {
+      scale: 0.77,
+      rotate: "0deg",
+      duration: 1.5,
+      ease: "power1.inOut",
+    });
+
+    gsap.from(".leftCont h1 ", {
+      y: 50,
+      duration: 1.3,
+      stagger: 0.2,
+    });
+
+    gsap.to(".leftCont h1 ", {
+      y: -20,
+      duration: 1.3,
+      stagger: 0.2,
     });
   }, []);
   return (
     <>
       <div className="main h-screen w-full flex  ">
-        <div className="h-full w-full absolute bg-gradient-to-br from-black via-neutral-900 to-neutral-800  ">
+        <div className=" .particlTheme h-full w-full absolute bg-gradient-to-br from-black via-neutral-900 to-neutral-800  ">
           <Particles
             particleCount={210}
             particleSpread={12}
@@ -88,7 +154,7 @@ function App() {
             <h1>
               <i
                 className="ri-flashlight-fill sm:text-[4rem] md:text-[4rem]
-                lg:text-[3rem] text-[4rem] ml-30 text-[#06923E]  "
+                lg:text-[3rem] text-[4rem] ml-30 text-[#06923E]  animate-pulse "
               ></i>
             </h1>
             <h1 className="lg:text-[3vw] md:text-4xl sm:text-3xl text-zinc-100">
@@ -99,9 +165,23 @@ function App() {
             </h1>
             <button
               ref={btnRef}
+              onMouseDown={() => {
+                gsap.to(btnRef.current, {
+                  scale: 0.88,
+                  duration: 1.4,
+                  ease: "power1.out",
+                });
+              }}
+              onMouseUp={() => {
+                gsap.to(btnRef.current, {
+                  scale: 1,
+                  duration: 1.2,
+                  ease: "bounce(1,1.2)",
+                });
+              }}
               className="ctaBtn h-[10vh] w-[50vw] text-3xl  bg-[#06923E] rounded-lg mt-10
-              p-2 shadow-2xl shadow-black active:scale-90 text-zinc-100 text-shadow-md text-shadow-black
-              cursor-pointer
+              p-2 shadow-2xl shadow-black  text-zinc-100 text-shadow-md text-shadow-black
+              cursor-pointer  hover:shadow-sm hover:shadow-amber-100
               sm:h-[8vh] sm:w-[30vw] sm:p-2 sm:text-4xl
               md:h-[8vh] md:w-[32vw] md:p-2 md:text-4xl
               lg:h-[12vh] lg:w-[17vw] lg:p-2 lg:text-4xl"
@@ -115,11 +195,12 @@ function App() {
               <img
                 ref={prodRef}
                 src="./src/assets/btlimg.png"
-                className="btl sm:scale-150 md:scale-110 lg:scale-90 scale-100 
+                className="btl 
+                sm:scale-150 md:scale-110 lg:scale-90 scale-100 
                   drop-shadow-[0_0_12px_rgba(34,197,94,0.35)] z-50 "
               />
             </div>
-            <div className="splash absolute">
+            <div className="splash absolute ">
               <img src="./src/assets/splash.png" className=" scale-95" />
             </div>
           </div>
@@ -134,10 +215,10 @@ function App() {
           <div className="stoneWrapp relative h-full w-full">
             <img
               src="./src/assets/stone.png"
-              className="scale-50 absolute top-[50%]
-            sm:scale-50 sm:absolute sm:top-[50%]
-              md:scale-75 md:absolute md:top-[50%]
-              lg:scale-75 lg:absolute lg:top-[50%]
+              className="scale-50 absolute top-[50%] hidden
+               sm:block sm:scale-50 sm:absolute sm:top-[50%]
+               md:block md:scale-75 md:absolute md:top-[50%]
+              lg:block  lg:scale-75 lg:absolute lg:top-[50%]
             drop-shadow-md drop-shadow-amber-50 "
             />
 
@@ -151,7 +232,11 @@ function App() {
             />
           </div>
         </div>
-        <div className="rightSect flex flex-col  h-full  w-1/2 items-center p-9 gap-7 ">
+        <div
+          className="rightSect flex flex-col  h-full  p-14  sm:w-1/2 sm:items-center sm:p-9 sm:gap-7
+        md:w-1/2 md:items-center md:p-9 md:gap-7 
+        lg:w-1/2 lg:items-center lg:p-9 lg:gap-7"
+        >
           <h1 className="text-4xl font-[font1]">
             More Than Water. A Smarter Hydration Choice.
           </h1>
@@ -164,16 +249,16 @@ function App() {
           </p>
           <h1 className="text-2xl text-white font-[font1]">Crafted with</h1>
           <div className="grid grid-cols-2 gap-6 mt-8">
-            <div className="p-4 bg-[#2B2730] text-amber-50 rounded-xl shadow-md shadow-[#2B2730]">
+            <div className=" card p-4 bg-[#2B2730] text-amber-50 rounded-xl shadow-sm shadow-amber-50">
               Balanced alkaline minerals
             </div>
-            <div className="p-4 bg-[#2B2730] text-amber-50 rounded-xl shadow-md shadow-[#2B2730]">
+            <div className=" card p-4 bg-[#2B2730] text-amber-50 rounded-xl shadow-sm shadow-amber-50">
               Essential electrolytes
             </div>
-            <div className="p-4 bg-[#2B2730] text-amber-50 rounded-xl shadow-md shadow-[#2B2730]">
+            <div className=" card p-4 bg-[#2B2730] text-amber-50 rounded-xl shadow-sm shadow-amber-50">
               Trace nutrients for body support
             </div>
-            <div className="p-4 bg-[#2B2730] text-amber-50 rounded-xl shadow-md shadow-[#2B2730]">
+            <div className=" card p-4 bg-[#2B2730] text-amber-50 rounded-xl shadow-sm shadow-amber-50">
               Ultra-filtered water for purity
             </div>
           </div>
