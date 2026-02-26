@@ -1,4 +1,3 @@
-import { useGSAP } from "@gsap/react";
 import Navbar from "./components/Navbar";
 import Particles from "./components/Particles";
 import "remixicon/fonts/remixicon.css";
