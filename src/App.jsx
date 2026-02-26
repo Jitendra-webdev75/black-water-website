@@ -5,6 +5,10 @@ import "remixicon/fonts/remixicon.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import bottle from "./assets/btlimg.png";
+import splash from "./assets/splash.png";
+import stone from "./assets/stone.png";
+import grass from "./assets/grass.png";
 gsap.registerPlugin(ScrollTrigger);
 function App() {
   const prodRef = useRef(null);
@@ -194,14 +198,14 @@ function App() {
             <div className="productImg  z-50 mt-3.5 ">
               <img
                 ref={prodRef}
-                src="./src/assets/btlimg.png"
+                src={bottle}
                 className="btl 
                 sm:scale-150 md:scale-110 lg:scale-90 scale-100 
                   drop-shadow-[0_0_12px_rgba(34,197,94,0.35)] z-50 "
               />
             </div>
             <div className="splash absolute ">
-              <img src="./src/assets/splash.png" className=" scale-95" />
+              <img src={splash} className=" scale-95" />
             </div>
           </div>
         </div>
@@ -214,7 +218,7 @@ function App() {
         <div className="leftSect relative h-full w-1/2 ">
           <div className="stoneWrapp relative h-full w-full">
             <img
-              src="./src/assets/stone.png"
+              src={stone}
               className="scale-50 absolute top-[50%] hidden
                sm:block sm:scale-50 sm:absolute sm:top-[50%]
                md:block md:scale-75 md:absolute md:top-[50%]
@@ -223,7 +227,7 @@ function App() {
             />
 
             <img
-              src="./src/assets/grass.png "
+              src={grass}
               className="hidden  absolute 
               sm:hidden 
                md:block md:scale-50 md:absolute md:top-[38%] md:-left-[22%] 

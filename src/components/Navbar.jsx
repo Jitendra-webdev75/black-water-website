@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "./assets/logo.png";
 
 function Navbar() {
   return (
@@ -9,7 +10,7 @@ function Navbar() {
         h-[8vh] w-[9vw]  ml-3 mt-1 text-2xl  "
         >
           <img
-            src="./src/assets/logo.png"
+            src={logo}
             className="sm:scale-200  md:scale-200 lg:scale-110 scale-200
               p-2"
           />
