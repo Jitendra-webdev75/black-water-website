@@ -82,7 +82,6 @@ function App() {
       rotate: "180deg",
       duration: 1.5,
       ease: "power1.inOut",
-      ease: "power1.out",
     });
 
     gsap.to(prodRef.current, {
